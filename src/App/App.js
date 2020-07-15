@@ -35,7 +35,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("https://gist.githubusercontent.com/alexandrov-va/7f353ca822d074d7ce22d3af3d13696f/raw/0907091de6fedf6153cdb718f32a4215dc2c53cf/page.json")
+        axios.get("https://raw.githubusercontent.com/beast51/Online_form-react-axios-json-bootstrap/master/Layout%20and%20JSON/page.json")
             .then(response => {
 
             const {title: galleryTitle, images, slidesPerView} = response.data.components[0].metadata;
