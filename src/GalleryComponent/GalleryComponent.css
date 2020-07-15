@@ -1,0 +1,41 @@
+/*- - - - slick - - - - -*/
+.slick-dots li.slick-active button:before {
+    color: #479C3F;
+    font-size: 12px;
+}
+
+.slick-dots li button:before {
+    font-size: 12px;
+    opacity: .25;
+    color: #479C3F;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*!*!* Arrows *!*!*/
+.slick-prev:before,
+.slick-next:before {
+    display: none;
+}
+
+.slick-prev,
+.slick-next {
+    width: 35px;
+    height: 36px;
+    z-index:5;
+}
+
+.slick-prev,.slick-prev:hover,.slick-prev:focus {
+    left: 0px;
+    top: 110%;
+    background: url('./img/arrow_left.svg') no-repeat;
+}
+
+.slick-next,.slick-next:hover,.slick-next:focus {
+    right: 0px;
+    top: 110%;
+    background: url('./img/arrow_right.svg') no-repeat;
+}
+
+/*- - - - slick - - - - -*/
+

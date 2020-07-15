@@ -1,0 +1,131 @@
+label {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 140%;
+}
+
+button {
+    background: linear-gradient(98.3deg, #93E08C -1.93%, #78CEBF 97.03%);
+    border-radius: 3px;
+    width: 192px;
+    height: 42px;
+    padding: 12px 24px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+button,
+button:active,
+button:focus {
+    outline: none;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: #479C3F;
+}
+
+input, textarea {
+    font-family: Montserrat;
+}
+
+input:focus, textarea:focus {
+    border-image: linear-gradient(98.3deg, #93E08C -1.93%, #78CEBF 97.03%);
+    border-image-slice: 1;
+}
+
+textarea.form-control {
+    min-height: 122px;
+}
+
+.checkbox {
+    /*display: none;*/
+
+    /*- - - - */
+
+    /*-webkit-appearance: none;*/
+    /*-moz-appearance: none;*/
+    /*appearance: none;*/
+
+    /*- - - - */
+
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.text {
+    position: relative;
+    padding-left: 30px;
+    padding-top: 3px;
+    display: inline-block;
+}
+
+.text::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #C9C9C9;
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.text::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 15px;
+    height: 13px;
+    background: url("./img/Vector.svg") no-repeat;
+    top: 4px;
+    left: 3px;
+    opacity: 0;
+}
+
+.checkbox:checked + .text::after {
+    opacity: 1;
+}
+
+::-webkit-calendar-picker-indicator {
+    color: transparent;
+    opacity: 1;
+    background: url(./img/date.svg) no-repeat center;
+    background-size: contain;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

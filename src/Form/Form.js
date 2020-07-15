@@ -1,0 +1,86 @@
+import React from 'react';
+import './Form.css';
+
+class Form extends React.Component {
+
+    render() {
+        const {field_groups: {main, additional}, fields, submit_button: {text}, title: formTitle} = this.props.form;
+
+        return (
+            <form action="">
+                <div className="container">
+                    <div className="row">
+                        <h2 className="mt-3">{formTitle}</h2>
+                        <div className={main}>
+                            <div className="row">
+                                {fields.map((field, num) => {
+                                    if (field.group === 'main') {
+                                        return (
+                                            <div className="col-md-6 mb-3" key={num}>
+                                                <label htmlFor={field.name} className="form-label">
+                                                    {field.label}
+                                                </label>
+                                                <input type={field.type}
+                                                       className="form-control"
+                                                       id={field.name}
+                                                       required={field.required}
+                                                />
+                                            </div>
+                                        )
+                                    } else return null;
+                                })}
+                            </div>
+                        </div>
+                        <div className={additional}>
+                            <div className="row">
+                                {fields.map((field, num) => {
+                                    if (field.group === 'additional') {
+                                        return (
+                                            <div className="col-md-12 mb-3" key={num}>
+                                                <label htmlFor={field.name} className="form-label">
+                                                    {field.label}
+                                                </label>
+                                                <textarea type={field.type}
+                                                          className="form-control"
+                                                          id={field.name}
+                                                          required={field.required}
+                                                />
+                                            </div>
+                                        )
+                                    } else return null;
+                                })}
+                            </div>
+                        </div>
+                        <div className='col-md-12'>
+                            <div className="row">
+                                {fields.map((field, num) => {
+                                    if (field.type === 'checkbox') {
+                                        return (
+                                            <div className="col-md-12 mb-3" key={num}>
+                                                <label htmlFor={field.name}
+                                                       className="form-check-label">
+                                                    <input type={field.type} className="checkbox"
+                                                           id={field.name}
+                                                           required={field.required}
+                                                    />
+                                                    <span className="text"
+                                                          dangerouslySetInnerHTML={{__html: field.label}}>
+                                                    </span>
+                                                </label>
+                                                <div className="col-md-6 mt-3 mb-3">
+                                                    <button type="submit" className="btn">{text}</button>
+                                                </div>
+                                            </div>
+                                        )
+                                    } else return null;
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        );
+    }
+}
+
+export default Form;
