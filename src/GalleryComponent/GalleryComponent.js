@@ -4,6 +4,7 @@ import "./GalleryComponent.css";
 
 class GalleryComponent extends React.Component {
     render() {
+
         const {title, images, slidesPerView} = this.props;
         let settings = {
             dots: true,
@@ -17,7 +18,7 @@ class GalleryComponent extends React.Component {
                     breakpoint: 800,
                     settings: {
                         slidesToShow: 1,
-                        slidesToScroll: 1
+                        slidesToScroll: 1,
                     }
                 }
             ]
