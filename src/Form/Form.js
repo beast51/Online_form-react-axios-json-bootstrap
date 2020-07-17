@@ -3,11 +3,36 @@ import './Form.css';
 
 class Form extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            phone: '',
+            email: '',
+            appointment_date: '',
+            comments: '',
+            agreement: false
+        }
+    }
+
     render() {
         const {field_groups: {main, additional}, fields, submit_button: {text}, title: formTitle} = this.props.form;
 
+        let handleUserInput = (e) => {
+            const name = e.target.name;
+            const value = e.target.value;
+            console.log(name, value);
+            this.setState({[name]: value});
+        };
+
+        let handleCheckboxChange = (e) => {
+            this.setState({
+                agreement: !this.state.agreement
+            })
+        };
+
         return (
-            <form action="">
+            <form >
                 <div className="container">
                     <div className="row">
                         <h2 className="mt-3">{formTitle}</h2>
@@ -22,8 +47,10 @@ class Form extends React.Component {
                                                 </label>
                                                 <input type={field.type}
                                                        className="form-control"
-                                                       id={field.name}
+                                                       name={field.name}
                                                        required={field.required}
+                                                       onChange={handleUserInput}
+                                                       value={this.state[field.name]}
                                                 />
                                             </div>
                                         )
@@ -41,9 +68,11 @@ class Form extends React.Component {
                                                     {field.label}
                                                 </label>
                                                 <textarea type={field.type}
+                                                          name={field.name}
                                                           className="form-control"
-                                                          id={field.name}
                                                           required={field.required}
+                                                          value={this.state[field.name]}
+                                                          onChange={handleUserInput}
                                                 />
                                             </div>
                                         )
@@ -60,15 +89,18 @@ class Form extends React.Component {
                                                 <label htmlFor={field.name}
                                                        className="form-check-label">
                                                     <input type={field.type} className="checkbox"
-                                                           id={field.name}
                                                            required={field.required}
+                                                           name={field.name}
+                                                           id={field.name}
+                                                           onChange={handleCheckboxChange}
+                                                           checked={this.state[field.name]}
                                                     />
                                                     <span className="text"
                                                           dangerouslySetInnerHTML={{__html: field.label}}>
                                                     </span>
                                                 </label>
                                                 <div className="col-md-6 mt-3 mb-3">
-                                                    <button type="submit" className="btn">{text}</button>
+                                                    <button type="submit" className="btn" disabled={!this.state.agreement}>{text}</button>
                                                 </div>
                                             </div>
                                         )

@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App/App';
 import * as serviceWorker from './serviceWorker';
+import state from "./redux/state";
 
 ReactDOM.render(
-    <App />,
+    <App state={state}/>,
   document.getElementById('root')
 );
 

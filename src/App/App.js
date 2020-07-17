@@ -13,10 +13,14 @@ import * as axios from "axios";
 class App extends React.Component {
     constructor(props) {
         super(props);
+        console.log(this.props.state);
         this.state = {
-            galleryTitle: '',
-            images: [],
-            slidesPerView: 0,
+
+            galleryComponent: {
+                galleryTitle: '',
+                images: [],
+                slidesPerView: 0,
+            },
 
             gridComponent: [],
 
@@ -30,23 +34,26 @@ class App extends React.Component {
                     text: ""
                 },
                 title: ""
-            },
+            }
         }
     }
 
     componentDidMount() {
         axios.get("https://raw.githubusercontent.com/beast51/Online_form-react-axios-json-bootstrap/master/JSON/page.json")
             .then(response => {
-
+console.log('componentDidMount', response.data);
             const {title: galleryTitle, images, slidesPerView} = response.data.components[0].metadata;
             const {field_groups: {additional, main}, fields, submit_button: {text}, title: formTitle} = response.data.form;
 
             this.setState({
-                gridComponent: response.data.components[1].metadata.components,
 
-                galleryTitle: galleryTitle,
-                images: images,
-                slidesPerView: slidesPerView,
+                galleryComponent: {
+                    galleryTitle: galleryTitle,
+                    images: images,
+                    slidesPerView: slidesPerView
+                },
+
+                gridComponent: response.data.components[1].metadata.components,
 
                 form: {
                     field_groups: {
@@ -67,9 +74,7 @@ class App extends React.Component {
         return (
             <div>
                 <HeaderTest/>
-                <GalleryComponent title={this.state.galleryTitle}
-                                  images={this.state.images}
-                                  slidesPerView={this.state.slidesPerView}/>
+                <GalleryComponent gallery={this.state.galleryComponent}/>
                 <GridComponent gridComponent={this.state.gridComponent}/>
                 <Form form={this.state.form}/>
             </div>

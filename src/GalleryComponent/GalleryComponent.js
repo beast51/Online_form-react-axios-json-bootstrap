@@ -5,7 +5,7 @@ import "./GalleryComponent.css";
 class GalleryComponent extends React.Component {
     render() {
 
-        const {title, images, slidesPerView} = this.props;
+        const {galleryTitle, images, slidesPerView} = this.props.gallery;
         let settings = {
             dots: true,
             infinite: true,
@@ -27,7 +27,7 @@ class GalleryComponent extends React.Component {
         return (
             <div className="container">
                 <header className="pt-5">
-                    <h1>{title}</h1>
+                    <h1>{galleryTitle}</h1>
                 </header>
                 <Slider {...settings} >
                     {images.map((url, number) => {
